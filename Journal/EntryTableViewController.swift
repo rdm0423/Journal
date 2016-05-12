@@ -12,6 +12,9 @@ class EntryTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        setNeedsStatusBarAppearanceUpdate()
+        
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -24,6 +27,10 @@ class EntryTableViewController: UITableViewController {
         super.viewWillAppear(true)
         
         tableView.reloadData()
+    }
+    
+    override func preferredStatusBarStyle() -> UIStatusBarStyle {
+        return .LightContent
     }
 
     override func didReceiveMemoryWarning() {

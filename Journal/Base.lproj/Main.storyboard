@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="St6-xG-Rrl">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--Journal-->
@@ -48,6 +49,7 @@
                     </tableView>
                     <navigationItem key="navigationItem" title="Journal" id="LD5-xl-C1T">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="HPI-ML-ppW">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
                                 <segue destination="RF9-2D-7Ve" kind="show" id="eo2-44-V58"/>
                             </connections>
@@ -70,30 +72,44 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="lff-U0-bzg">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="lff-U0-bzg">
                                 <rect key="frame" x="20" y="81" width="560" height="30"/>
                                 <color key="backgroundColor" red="0.79139907293427991" green="0.8408119332160704" blue="0.8586387434554974" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="....." textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="SWH-0f-7LV">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="....." textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="SWH-0f-7LV">
                                 <rect key="frame" x="20" y="127" width="560" height="390"/>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6cE-DI-a3K">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6cE-DI-a3K">
                                 <rect key="frame" x="261" y="525" width="78" height="30"/>
-                                <state key="normal" title="CLEAR ALL"/>
+                                <state key="normal" title="CLEAR ALL">
+                                    <color key="titleColor" red="1" green="0.0" blue="0.3462042447" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
                                 <connections>
                                     <action selector="clearButtonTapped:" destination="RF9-2D-7Ve" eventType="touchUpInside" id="Bfl-Ac-PM2"/>
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="lff-U0-bzg" firstAttribute="leading" secondItem="SWH-0f-7LV" secondAttribute="leading" id="3nZ-IJ-WDp"/>
+                            <constraint firstItem="SWH-0f-7LV" firstAttribute="centerX" secondItem="6cE-DI-a3K" secondAttribute="centerX" id="61Q-tE-AQf"/>
+                            <constraint firstItem="2Or-Kz-Z9B" firstAttribute="top" secondItem="6cE-DI-a3K" secondAttribute="bottom" constant="45" id="DPF-N9-QfQ"/>
+                            <constraint firstItem="lff-U0-bzg" firstAttribute="trailing" secondItem="BAm-DP-wux" secondAttribute="trailingMargin" id="HAU-oT-tcs"/>
+                            <constraint firstItem="SWH-0f-7LV" firstAttribute="top" secondItem="lff-U0-bzg" secondAttribute="bottom" constant="16" id="T3u-zD-hrl"/>
+                            <constraint firstItem="lff-U0-bzg" firstAttribute="top" secondItem="Pw9-Wn-vTQ" secondAttribute="bottom" constant="17" id="Tkt-D9-QLT"/>
+                            <constraint firstItem="lff-U0-bzg" firstAttribute="trailing" secondItem="SWH-0f-7LV" secondAttribute="trailing" id="bOz-mM-Lhj"/>
+                            <constraint firstItem="6cE-DI-a3K" firstAttribute="top" secondItem="SWH-0f-7LV" secondAttribute="bottom" constant="8" symbolic="YES" id="gLi-nA-Hga"/>
+                            <constraint firstItem="lff-U0-bzg" firstAttribute="leading" secondItem="BAm-DP-wux" secondAttribute="leadingMargin" id="uLl-vW-QLa"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Entry" id="JGV-4q-mPK">
                         <barButtonItem key="rightBarButtonItem" systemItem="save" id="xhw-n5-Foc">
+                            <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <action selector="saveButtonPressed:" destination="RF9-2D-7Ve" id="bLx-ce-Tty"/>
                             </connections>
@@ -116,6 +132,7 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="nOk-gq-DPQ">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" red="0.15656996277657853" green="0.15275998738336619" blue="0.16753926701570676" alpha="1" colorSpace="calibratedRGB"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>

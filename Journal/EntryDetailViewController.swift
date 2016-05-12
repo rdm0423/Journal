@@ -20,10 +20,17 @@ class EntryDetailViewController: UIViewController, UITextFieldDelegate {
         super.viewDidLoad()
         
         if let entry = entry {
-            
             updateWithEntry(entry)
         }
-
+        
+        self.navigationItem.title = entry?.title
+        
+        setNeedsStatusBarAppearanceUpdate()
+        
+    }
+    
+    override func preferredStatusBarStyle() -> UIStatusBarStyle {
+        return .LightContent
     }
     
     override func didReceiveMemoryWarning() {
