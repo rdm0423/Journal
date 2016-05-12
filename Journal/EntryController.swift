@@ -38,7 +38,7 @@ class EntryController {
     }
     func saveToPersistentStorage() {
         
-        NSUserDefaults.standardUserDefaults().setObject(entries.map{$0.dictionaryCopy()}, forKey: kEntries)
+        NSUserDefaults.standardUserDefaults().setObject(entries.map{$0.dictionaryCopy}, forKey: kEntries)
     }
     
     func loadFromPersistentStorage() {

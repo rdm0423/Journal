@@ -18,6 +18,10 @@ class Entry: Equatable {
     var title: String
     var body: String
     
+    var dictionaryCopy: [String:AnyObject] {
+        return [timeStampKey: timeStamp, titleKey: title, bodyKey: body]
+    }
+    
     init(timeStamp: NSDate = NSDate(), title: String, body: String) {
         
         self.timeStamp = timeStamp
@@ -36,21 +40,9 @@ class Entry: Equatable {
                 self.body = ""
                 return nil
         }
-        
         self.timeStamp = timeStamp
         self.title = title
         self.body = body
-    }
-    
-    func dictionaryCopy() -> Dictionary<String, AnyObject> {
-        
-        let dictionary = [
-            timeStampKey : self.timeStamp,
-            titleKey : self.title,
-            bodyKey : self.body
-        ]
-
-        return dictionary
     }
 }
 
