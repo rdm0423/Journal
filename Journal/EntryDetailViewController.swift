@@ -49,17 +49,15 @@ class EntryDetailViewController: UIViewController, UITextFieldDelegate {
     
     @IBAction func saveButtonPressed(sender: AnyObject) {
         
-        guard let journal = journal, let title = titleTextField.text, let bodyText = bodyTextView.text where title.characters.count > 0 && bodyText.characters.count > 0 else {
+        guard let journal = journal, let title = titleTextField.text, let bodyText = bodyTextView.text else {
             return
         }
-        let newEntry = EntryController.createEntry(title, bodyText: bodyText, journal: journal)
-        JournalController.sharedController.addEntryToJournal(newEntry, journal: **)
-        
+        EntryController.createEntry(title, bodyText: bodyText, journal: journal)
         
         titleTextField.text = ""
         bodyTextView.text = ""
 
-        self.navigationController?.popViewControllerAnimated(true)
+        self.navigationController?.popToRootViewControllerAnimated(true)
         
         
 //        if let entry = self.entry {

@@ -38,7 +38,7 @@ class JournalTableViewController: UITableViewController {
         
         let addTitleAction = UIAlertAction(title: "Add", style: .Default) { (_) in
             
-            if let field = alertController.textFields![0] as? UITextField {
+            if let field: UITextField = alertController.textFields![0] {
                 
                 // Create Journal String to be Saved
                 let journalFolder = Journal(journalTitle: "\(field.text)")

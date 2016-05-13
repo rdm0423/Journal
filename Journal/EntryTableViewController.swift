@@ -124,13 +124,19 @@ class EntryTableViewController: UITableViewController {
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        
+        let entryDetailVC = segue.destinationViewController as? EntryDetailViewController
         if segue.identifier == "showEntrySegue" {
-            let entryDetailVC = segue.destinationViewController as? EntryDetailViewController
+            
             if let indexPath = tableView.indexPathForSelectedRow {
                 let entry = entries?[indexPath.row]
                 
                 entryDetailVC?.entry = entry
+                
+                
+            }
+        } else if segue.identifier == "addEntrySegue" {
+            if let journal = journal {
+                entryDetailVC?.journal = journal
             }
         }
     }
