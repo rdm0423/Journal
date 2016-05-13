@@ -11,6 +11,7 @@ import UIKit
 class EntryDetailViewController: UIViewController, UITextFieldDelegate {
 
     var entry: Entry?
+    var journal: Journal?
     
     @IBOutlet weak var titleTextField: UITextField!
     @IBOutlet weak var bodyTextView: UITextView!
@@ -25,13 +26,13 @@ class EntryDetailViewController: UIViewController, UITextFieldDelegate {
         
         self.navigationItem.title = entry?.title
         
-        setNeedsStatusBarAppearanceUpdate()
+//        setNeedsStatusBarAppearanceUpdate()
         
     }
     
-    override func preferredStatusBarStyle() -> UIStatusBarStyle {
-        return .LightContent
-    }
+//    override func preferredStatusBarStyle() -> UIStatusBarStyle {
+//        return .LightContent
+//    }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -48,18 +49,31 @@ class EntryDetailViewController: UIViewController, UITextFieldDelegate {
     
     @IBAction func saveButtonPressed(sender: AnyObject) {
         
-        if let entry = self.entry {
-            
-            entry.title = self.titleTextField.text!
-            entry.body = self.bodyTextView.text
-            entry.timeStamp = NSDate()
-        } else {
-            
-            let newEntry = Entry(title: self.titleTextField.text!, body: self.bodyTextView.text!)
-            EntryController.sharedController.addEntry(newEntry)
-            self.entry = newEntry
+        guard let journal = journal, let title = titleTextField.text, let bodyText = bodyTextView.text where title.characters.count > 0 && bodyText.characters.count > 0 else {
+            return
         }
+        let newEntry = EntryController.createEntry(title, bodyText: bodyText, journal: journal)
+        JournalController.sharedController.addEntryToJournal(newEntry, journal: **)
+        
+        
+        titleTextField.text = ""
+        bodyTextView.text = ""
+
         self.navigationController?.popViewControllerAnimated(true)
+        
+        
+//        if let entry = self.entry {
+//            
+//            entry.title = self.titleTextField.text!
+//            entry.body = self.bodyTextView.text
+//            entry.timeStamp = NSDate()
+//        } else {
+//            // let newEntry = Entry(title: self.titleTextField.text!, body: self.bodyTextView.text!)
+//             EntryController.createEntry(self.titleTextField.text!, bodyText: self.bodyTextView.text!, journal: //)
+////            JournalController.sharedController.addEntryToJournal(newEntry, journal: (journal?)!)
+////            self.entry = newEntry
+//        }
+//        self.navigationController?.popViewControllerAnimated(true)
     }
     
     @IBAction func clearButtonTapped(sender: AnyObject) {

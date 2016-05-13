@@ -1,29 +1,19 @@
 //
-//  EntryTableViewController.swift
+//  JournalTableViewController.swift
 //  Journal
 //
-//  Created by Ross McIlwaine on 5/11/16.
+//  Created by Ross McIlwaine on 5/12/16.
 //  Copyright © 2016 DevMountain. All rights reserved.
 //
 
 import UIKit
 
-class EntryTableViewController: UITableViewController {
+class JournalTableViewController: UITableViewController {
 
-    var journal: Journal?
-    var entries: [Entry]?
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
-        if let journal = journal {
-            updateWithJournal(journal)
-            entries = journal.entries
-        }
-        
-//        setNeedsStatusBarAppearanceUpdate()
-        
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -34,48 +24,77 @@ class EntryTableViewController: UITableViewController {
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(true)
-        
         tableView.reloadData()
     }
-    
-    func updateWithJournal(journal: Journal) {
-        
-        self.journal = journal
-        
-//        self.titleTextField.text = entry.title
-//        self.bodyTextView.text = entry.body
-    }
-    
-//    override func preferredStatusBarStyle() -> UIStatusBarStyle {
-//        return .LightContent
-//    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    @IBAction func addJournalButtonTapped(sender: AnyObject) {
+        
+        let alertController = UIAlertController(title: "Title", message: "Create a New Journal Folder", preferredStyle: .Alert)
+        
+        let addTitleAction = UIAlertAction(title: "Add", style: .Default) { (_) in
+            
+            if let field = alertController.textFields![0] as? UITextField {
+                
+                // Create Journal String to be Saved
+                let journalFolder = Journal(journalTitle: "\(field.text)")
+//                print(journalFolder.journalTitle)
+                JournalController.sharedController.addJournal(journalFolder.journalTitle)
+                
+                
+            } else {
+                
+                // Did Not Type in Field
+            }
+        }
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel) { (_) in }
+        
+        alertController.addTextFieldWithConfigurationHandler { (textField) in textField.placeholder = "Folder"
+            
+        }
+        
+        alertController.addAction(addTitleAction)
+        alertController.addAction(cancelAction)
+        
+        self.presentViewController(alertController, animated: true) { 
+            
+        }
+        // save to persistent storage on close?
+        JournalController.sharedController.saveToPersistentStorage()
+        
+        tableView.reloadData()
+    }
+    
+    
 
     // MARK: - Table view data source
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-
+        // #warning Incomplete implementation, return the number of sections
         return 1
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-
-        return entries?.count ?? 0
+        // #warning Incomplete implementation, return the number of rows
+        return JournalController.sharedController.journals.count
     }
 
+    
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("entryCell", forIndexPath: indexPath)
+        let cell = tableView.dequeueReusableCellWithIdentifier("journalCell", forIndexPath: indexPath)
+
+        let journal = JournalController.sharedController.journals[indexPath.row]
         
-        let entry = entries?[indexPath.row]
-        
-        
-        cell.textLabel?.text = entry?.title
-        cell.detailTextLabel?.text = "\(entry?.timeStamp)"
-        
+        cell.textLabel?.text = journal.journalTitle
+        cell.detailTextLabel?.text = "\(journal.entries.count) entries"
+//        let numberOfEntries = JournalController.sharedController.journals.count
+//        cell.detailTextLabel?.text = "\(numberOfEntries) Entries"
+
         return cell
     }
  
@@ -88,14 +107,14 @@ class EntryTableViewController: UITableViewController {
     }
     */
 
+    
     // Override to support editing the table view.
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         if editingStyle == .Delete {
             // Delete the row from the data source
             
-//            let entry = entries?[indexPath.row]
-//            
-//            JournalController.sharedController.removeEntryFromJournal(entry, journal: journ)
+            let journal = JournalController.sharedController.journals[indexPath.row]
+            JournalController.sharedController.removeJournal(journal)
             
             tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
         } else if editingStyle == .Insert {
@@ -124,14 +143,19 @@ class EntryTableViewController: UITableViewController {
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        // Get the new view controller using segue.destinationViewController.
+        // Pass the selected object to the new view controller.
         
-        if segue.identifier == "showEntrySegue" {
-            let entryDetailVC = segue.destinationViewController as? EntryDetailViewController
+        if segue.identifier == "toEntriesSegue" {
+            let journalTVC = segue.destinationViewController as? EntryTableViewController
             if let indexPath = tableView.indexPathForSelectedRow {
-                let entry = entries?[indexPath.row]
+                let journal = JournalController.sharedController.journals[indexPath.row]
+                journalTVC?.journal = journal
                 
-                entryDetailVC?.entry = entry
             }
         }
+        
     }
+ 
+
 }

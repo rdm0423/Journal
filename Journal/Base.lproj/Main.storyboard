@@ -1,10 +1,64 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="St6-xG-Rrl">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="nNS-PC-IcL">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
+        <!--My Journals-->
+        <scene sceneID="vBL-DG-QAz">
+            <objects>
+                <tableViewController id="2Vj-uy-MrF" customClass="JournalTableViewController" customModule="Journal" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="erx-zu-zUO">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="journalCell" textLabel="OkI-s5-ABx" detailTextLabel="doQ-ry-pOa" style="IBUITableViewCellStyleValue1" id="KIy-So-57h">
+                                <rect key="frame" x="0.0" y="92" width="600" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KIy-So-57h" id="dDF-7N-E77">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="OkI-s5-ABx">
+                                            <rect key="frame" x="15" y="12" width="32" height="20"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Detail" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="doQ-ry-pOa">
+                                            <rect key="frame" x="543" y="12" width="42" height="20"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                            <color key="textColor" red="0.55686274509803924" green="0.55686274509803924" blue="0.57647058823529407" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="PPj-ea-1Mc" kind="show" identifier="toEntriesSegue" id="Y4k-B8-MdD"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="2Vj-uy-MrF" id="bgG-eM-Ywh"/>
+                            <outlet property="delegate" destination="2Vj-uy-MrF" id="619-UN-YIv"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="My Journals" id="YfR-Xv-LiT">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="P4d-3v-a9j">
+                            <connections>
+                                <action selector="addJournalButtonTapped:" destination="2Vj-uy-MrF" id="N8X-7f-HkG"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="uOx-sl-O6Y" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2454" y="435"/>
+        </scene>
         <!--Journal-->
         <scene sceneID="3no-ZX-1Zl">
             <objects>
@@ -51,14 +105,14 @@
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="HPI-ML-ppW">
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
-                                <segue destination="RF9-2D-7Ve" kind="show" id="eo2-44-V58"/>
+                                <segue destination="RF9-2D-7Ve" kind="show" identifier="addEntrySegue" id="eo2-44-V58"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Qbk-My-Cyw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2324" y="441"/>
+            <point key="canvasLocation" x="3136" y="441"/>
         </scene>
         <!--Entry-->
         <scene sceneID="eaH-uD-xXw">
@@ -122,29 +176,28 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rJO-TA-nma" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2981" y="441"/>
+            <point key="canvasLocation" x="3887" y="441"/>
         </scene>
         <!--Navigation Controller-->
-        <scene sceneID="Gsq-cy-qlQ">
+        <scene sceneID="rGw-7W-lev">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="St6-xG-Rrl" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="nNS-PC-IcL" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="nOk-gq-DPQ">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="hJG-Eo-pjP">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="barTintColor" red="0.15656996277657853" green="0.15275998738336619" blue="0.16753926701570676" alpha="1" colorSpace="calibratedRGB"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="PPj-ea-1Mc" kind="relationship" relationship="rootViewController" id="66y-XT-47g"/>
+                        <segue destination="2Vj-uy-MrF" kind="relationship" relationship="rootViewController" id="Ppt-Vn-UY5"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="AOP-yp-PVU" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="pJ0-Xd-xOc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1512" y="441"/>
+            <point key="canvasLocation" x="1642" y="435"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="xVv-ZI-0JD"/>
+        <segue reference="eo2-44-V58"/>
     </inferredMetricsTieBreakers>
 </document>

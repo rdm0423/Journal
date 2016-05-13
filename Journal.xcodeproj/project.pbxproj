@@ -17,6 +17,9 @@
 		FF43A2BA1CE3FD280077C0F2 /* EntryController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF43A2B91CE3FD280077C0F2 /* EntryController.swift */; };
 		FF43A2BC1CE3FD330077C0F2 /* EntryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF43A2BB1CE3FD330077C0F2 /* EntryTableViewController.swift */; };
 		FF43A2BE1CE3FD4A0077C0F2 /* EntryDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF43A2BD1CE3FD4A0077C0F2 /* EntryDetailViewController.swift */; };
+		FF704A971CE527B600BB9C28 /* JournalTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF704A961CE527B600BB9C28 /* JournalTableViewController.swift */; };
+		FF704A991CE527C500BB9C28 /* JournalController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF704A981CE527C500BB9C28 /* JournalController.swift */; };
+		FF704A9B1CE527CD00BB9C28 /* Journal.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF704A9A1CE527CD00BB9C28 /* Journal.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +56,9 @@
 		FF43A2B91CE3FD280077C0F2 /* EntryController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EntryController.swift; sourceTree = "<group>"; };
 		FF43A2BB1CE3FD330077C0F2 /* EntryTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EntryTableViewController.swift; sourceTree = "<group>"; };
 		FF43A2BD1CE3FD4A0077C0F2 /* EntryDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EntryDetailViewController.swift; sourceTree = "<group>"; };
+		FF704A961CE527B600BB9C28 /* JournalTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JournalTableViewController.swift; sourceTree = "<group>"; };
+		FF704A981CE527C500BB9C28 /* JournalController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JournalController.swift; sourceTree = "<group>"; };
+		FF704A9A1CE527CD00BB9C28 /* Journal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Journal.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -136,6 +142,7 @@
 		FF43A2BF1CE3FD510077C0F2 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				FF704A9A1CE527CD00BB9C28 /* Journal.swift */,
 				FF43A2B71CE3FD1F0077C0F2 /* Entry.swift */,
 			);
 			name = Model;
@@ -144,6 +151,7 @@
 		FF43A2C01CE3FD590077C0F2 /* Model Controller */ = {
 			isa = PBXGroup;
 			children = (
+				FF704A981CE527C500BB9C28 /* JournalController.swift */,
 				FF43A2B91CE3FD280077C0F2 /* EntryController.swift */,
 			);
 			name = "Model Controller";
@@ -152,6 +160,7 @@
 		FF43A2C11CE3FD600077C0F2 /* View Controller */ = {
 			isa = PBXGroup;
 			children = (
+				FF704A961CE527B600BB9C28 /* JournalTableViewController.swift */,
 				FF43A2BB1CE3FD330077C0F2 /* EntryTableViewController.swift */,
 				FF43A2BD1CE3FD4A0077C0F2 /* EntryDetailViewController.swift */,
 			);
@@ -291,7 +300,10 @@
 				FF43A2BA1CE3FD280077C0F2 /* EntryController.swift in Sources */,
 				FF43A2B81CE3FD1F0077C0F2 /* Entry.swift in Sources */,
 				FF43A2BC1CE3FD330077C0F2 /* EntryTableViewController.swift in Sources */,
+				FF704A9B1CE527CD00BB9C28 /* Journal.swift in Sources */,
+				FF704A991CE527C500BB9C28 /* JournalController.swift in Sources */,
 				FF43A2BE1CE3FD4A0077C0F2 /* EntryDetailViewController.swift in Sources */,
+				FF704A971CE527B600BB9C28 /* JournalTableViewController.swift in Sources */,
 				68816AC81BBB5405000569CE /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
